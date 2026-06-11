@@ -1,117 +1,156 @@
 @import url("style/header.css");
-:root{
- --laranja-claro: #14da8e;
-    --preto: #000000;
+
+/* 1. Variáveis e Reset Atualizados */
+:root {
+    --laranja-claro: #14da8e; /* Nota: a cor é um verde/ciano, se preferir mude o nome para --verde-neon */
+    --preto: #121212;         /* Um preto levemente suavizado fica mais sofisticado que o #000000 puro */
     --branco: #FFFFFF; 
+    --transicao-suave: all 0.3s ease; /* Para animações suaves nos botões */
+    --sombra-leve: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Evita que paddings quebrem o layout */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografia mais limpa e moderna */
 }
 
+/* 2. Cabeçalho */
 .cabecalho {
     background-color: #06df9e;
-    color:var(--branco);
+    color: var(--branco);
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 20px 0;
+    box-shadow: var(--sombra-leve); /* Dá profundidade ao topo da página */
 }
 
-.cabecalho-imagem{
+.cabecalho-imagem {
     width: 15%;
+    max-width: 120px; /* Garante que a imagem não mude drasticamente em telas muito grandes */
     margin: 0 10px;
+    transition: var(--transicao-suave);
 }
 
-.cabecalho-lista-item{
+.cabecalho-imagem:hover {
+    transform: scale(1.05); /* Efeito sutil ao passar o mouse */
+}
+
+.cabecalho-lista-item {
     display: inline-block;
-    margin: 0 10px;
-    font-size: 24px;
+    margin: 0 15px;
+    font-size: 18px; /* Reduzido levemente (24px costuma ser muito grande para menus) */
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transicao-suave);
 }
 
-.agro-imagem{
+.cabecalho-lista-item:hover {
+    color: var(--preto); /* Efeito visual interativo */
+    opacity: 0.8;
+}
+
+/* 3. Seções Principais (Agro e Contato) */
+.agro {
+    background-image: linear-gradient(135deg, #64c095, #2c744a); /* Gradiente diagonal fica mais dinâmico */
+    color: var(--branco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px; /* Mais espaço vertical deixa o design respirar */
+    flex-wrap: wrap; /* Garante que funcione bem no celular */
+}
+
+.agro-imagem {
     width: 25%;
-    margin: 10px;
+    min-width: 250px; /* Evita que a imagem esmague em telas menores */
+    border-radius: 12px; /* Bordas arredondadas dão um toque moderno */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    margin: 20px;
 }
 
-.agro{
-    background-image: linear-gradient(#64c095,#2c744a);
-    color:var(--branco);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 24px 0;
-}
-
-.agro-div-conteudo{
-    width: 35%;
+.agro-div-conteudo {
+    width: 45%; /* Aumentado para equilibrar com a imagem */
+    min-width: 300px;
     padding: 14px 0;
     margin: 10px;
 }
-.agro-titulo{
-    padding: 24px 0;
+
+.agro-titulo {
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 15px;
 }
-.contato{
-  background-image: linear-gradient(#64c095,#2c744a);
-    color:var(--branco);
+
+.contato {
+    background-image: linear-gradient(135deg, #64c095, #2c744a);
+    color: var(--branco);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 14px 0;
+    padding: 40px 20px;
 }
 
-.rodape{
-    background-color:var(--preto);
-    text-align: center;
+/* 4. Rodapé */
+.rodape {
+    background-color: var(--preto);
+    padding: 20px 0;
 }
 
-.rodape-imagem{
-    height: 60px;
-    padding: 12px 0;
-   
+.rodape-imagem {
+    height: 50px;
+    transition: var(--transicao-suave);
 }
 
-
-.menu-acessibilidade{
+/* 5. Acessibilidade e Botões */
+.menu-acessibilidade {
     position: fixed;
-    top:2rem;
-    right:20px;
+    top: 2rem;
+    right: 20px;
     z-index: 1000;
 }
 
-.rotacao-botao{
-    transform: rotate(-90deg);
-    transform-origin: right center;
+.opcoes-acessibilidade button {
+    background-color: var(--branco);
+    color: var(--preto);
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: var(--sombra-leve);
+    transition: var(--transicao-suave);
 }
 
-.opcoes-acessibilidade{
-    margin-top:10px;
-    display: flex;
-    flex-direction: column;
+.opcoes-acessibilidade button:hover {
+    background-color: var(--laranja-claro);
+    transform: translateY(-2px); /* Botão "sobe" levemente ao passar o mouse */
 }
 
-.opcoes-acessibilidade button{
-    margin-bottom: 5px;
-}
-
-.apresenta-lista{
+.apresenta-lista {
     display: none;
 }
 
+/* 6. Alto Contraste (Melhorado para legibilidade real) */
 .alto-contraste {
-    background-color: var(--preto);
-    color: var(--branco);
+    background-color: #000000 !important;
+    color: #FFFF00 !important; /* Amarelo no preto é o padrão ouro de alto contraste */
 }
 
 .alto-contraste .cabecalho,
 .alto-contraste .rodape,
-.alto-contraste .agro {
-    background-color: var(--preto);
-    color: var(--branco);
+.alto-contraste .agro,
+.alto-contraste .contato {
+    background: #000000 !important;
+    color: #FFFF00 !important;
+    border: 1px solid #FFFF00;
 }
-.alto-contraste .botao-inicio,
-.alto-contraste .btn-primary {
-    background-color: var(--laranja-claro);
-    color: var(--preto);
+
+.alto-contraste button {
+    background-color: #FFFF00 !important;
+    color: #000000 !important;
+    border: 2px solid #FFFF00 !important;
 }
